@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<bean id="desk" class="core.test1.Desk">
+	<property name="leg" ref="leg"></property> <!-- setleg 라는 객체에 leg라는 bean을 넣어라 -->
+</bean>
+
+<bean id="leg" class="core.test1.Leg"></bean>
+
+<bean id="chair" class="core.test1.Chair">
+	<constructor-arg ref="leg"></constructor-arg>
+</bean>
+
+</beans>
