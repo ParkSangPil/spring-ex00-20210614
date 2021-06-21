@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.zerock.mapper.Test1Mapper">
+
+  <select id="getList" resultType="org.zerock.domain.Test1VO">
+    
+    <![CDATA[
+	SELECT 
+		name name,
+		age age
+		FROM tbl_test1
+		WHERE id > 0 Order By id DESC
+    ]]>
+
+  </select>
+  
+  <insert id="insert">
+  	INSERT INTO tbl_test1 (name, age)
+  	VALUES (#{name}, #{age})
+  </insert>
+  
+  <insert id="insertSelectKey" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+  <!--                                                 VO의 Set프로퍼티         -->
+  	INSERT INTO tbl_test1 (name, age)
+  	VALUES (#{name}, #{age})
+  </insert>
+  
+  <select id="read" resultType="org.zerock.domain.Test1VO">
+  	SELECT 
+  		id id,
+  		name name,
+  		age age
+  	FROM tbl_test1
+  	WHERE id = #{id}
+  </select>
+  
+  <delete id="delete">
+  	DELETE FROM tbl_test1 WHERE id = #{id}
+  </delete>
+  
+  <update id="update">
+  	UPDATE tbl_test1
+  	SET
+  		name = #{name},
+  		age = #{age}
+  	WHERE
+  		id = #{id}
+  </update>
+  
+  
+</mapper>

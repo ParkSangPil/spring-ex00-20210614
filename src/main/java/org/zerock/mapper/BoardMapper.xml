@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.zerock.mapper.BoardMapper">
+
+  <select id="getList" resultType="org.zerock.domain.BoardVO">
+    
+    <![CDATA[
+	SELECT 
+		bno bno,
+		title title,
+		content content,
+		writer writer,
+		regdate regdate,
+		updatedate updateDate
+
+		FROM tbl_board
+		
+		WHERE bno > 0 Order By bno DESC
+    ]]> <!-- 이 안에 있는건 단순한 텍스트로 해석된다. 188p -->
+
+  </select>
+  
+  <insert id="insert">
+  	INSERT INTO tbl_board (title, content, writer)
+  	VALUES (#{title}, #{content}, #{writer})
+  </insert>
+  
+  <insert id="insertSelectKey" useGeneratedKeys="true" keyProperty="bno" keyColumn="bno">
+  <!--                                                 VO의 Set프로퍼티         -->
+  	INSERT INTO tbl_board (title, content, writer)
+  	VALUES (#{title}, #{content}, #{writer})
+  </insert>
+  
+  <select id="read" resultType="org.zerock.domain.BoardVO">
+  	SELECT 
+  		bno bno,
+  		title title,
+  		content content,
+  		writer writer,
+  		regdate regdate,
+  		updatedate updateDate
+  	FROM tbl_board
+  	WHERE bno = #{bno}
+  </select>
+  
+  <delete id="delete">
+  	DELETE FROM tbl_board WHERE bno = #{bno}
+  </delete>
+  
+  <update id="update">
+  	UPDATE tbl_board
+  	
+  	SET
+  		title = #{title},
+  		content = #{content},
+  		writer = #{writer},
+  		updateDate = NOW()
+  		
+  	WHERE
+  		bno = #{bno}
+  </update>
+  
+  
+</mapper>
