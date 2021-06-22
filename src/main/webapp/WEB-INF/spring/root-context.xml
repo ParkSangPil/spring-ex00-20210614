@@ -32,4 +32,8 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<context:component-scan base-package="org.zerock.sample"></context:component-scan>
+	
+	
+	<context:component-scan base-package="org.zerock.service"></context:component-scan>
+	
 </beans>
