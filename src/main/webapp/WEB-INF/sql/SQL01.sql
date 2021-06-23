@@ -9,3 +9,16 @@ CREATE table tbl_board (
     regdata TIMESTAMP DEFAULT NOW(),
     updatedate TIMESTAMP DEFAULT NOW()
 );
+
+SELECT * FROM tbl_board;
+
+
+
+
+
+
+
+
+
+
+
