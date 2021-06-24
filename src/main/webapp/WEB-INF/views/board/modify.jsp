@@ -49,6 +49,9 @@ $(document).ready(function() {
 					<label for="input2">작성자</label>
 					<input value="${board.writer }" readonly="readonly" id="input2" class="form-control" name="writer">
 				</div>
+				
+				<input hidden name="pageNum" value="${cri.pageNum }">
+				<input hidden name="amount" value="${cri.amount }">
 				<input class="btn btn-warning" type="submit" value="수정">
 				<input id="board-remove-btn1" class="btn btn-danger" type="button" value="삭제">
 			</form>

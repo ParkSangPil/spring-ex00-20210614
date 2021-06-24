@@ -51,18 +51,23 @@ public class BoardControllerTests {
 	
 	@Test
 	public void testList() throws Exception{
-		ModelAndView mav = mockMvc.perform(MockMvcRequestBuilders.get("/board/list"))
+		ModelAndView mav = mockMvc.perform(/*MockMvcRequestBuilders.*/
+				get("/board/list")
+				.param("pageNum", "2")
+				.param("amount", "7"))
 			.andReturn()// 요청을 받아서
 			.getModelAndView();// View에 전달되는게 어떤건지
 		
 		assertEquals("board/list", mav.getViewName());
-		
 		
 		Map<String, Object> map = mav.getModel();
 		
 		Object o = map.get("list");
 		assertNotNull(o);
 		assertTrue(o instanceof List<?>);
+		
+		List<BoardVO> list = (List<BoardVO>) o;
+		assertEquals(7, list.size());
 		
 //		fail("fail");
 	}

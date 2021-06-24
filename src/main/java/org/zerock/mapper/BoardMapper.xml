@@ -5,6 +5,28 @@
   
 <mapper namespace="org.zerock.mapper.BoardMapper">
 
+<select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">
+    
+    <![CDATA[
+    
+    SELECT 
+    	bno bno,
+    	title title,
+    	content content,
+    	writer writer,
+    	regdate regdate,
+    	updatedate updateDate
+    
+     FROM tbl_board
+     
+     ORDER BY bno DESC
+     
+     LIMIT #{from}, #{amount}
+     
+    ]]>
+    
+  </select>
+
   <select id="getList" resultType="org.zerock.domain.BoardVO">
     
     <![CDATA[
@@ -62,6 +84,10 @@
   	WHERE
   		bno = #{bno}
   </update>
+  
+  <select id="getTotalCount" resultType="int">
+  	SELECT COUNT(*) FROM tbl_board
+  </select>
   
   
 </mapper>
