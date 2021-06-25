@@ -40,6 +40,8 @@
 					<c:param name="bno" value="${board.bno }"></c:param>
 					<c:param name="pageNum" value="${cri.pageNum }"></c:param>
 					<c:param name="amount" value="${cri.amount }"></c:param>
+					<c:param name="type" value="${cri.type }"></c:param>
+					<c:param name="keyword" value="${cri.keyword }"></c:param>
 				</c:url>
 				
 				<a class="btn btn-secondary" href="${modifyUrl }">수정/삭제</a>

@@ -31,6 +31,21 @@ $(document).ready(function(){
 		
 		
 	});
+	
+	
+	
+	$("#pageUnit").change(function(){
+	    var nowPaging = $("#pageUnit option:selected").val();
+		
+	    if(nowPaging == 10){
+	        location.href="${appRoot}/board/list?pageNum=1&amount=10";  /* ${pageMaker.cri.pageNum } 라고 하면 버그가 있엉 */
+	    }else if(nowPaging == 20){
+	    	location.href="${appRoot}/board/list?pageNum=1&amount=20";
+	    }else if(nowPaging == 30){
+	    	location.href="${appRoot}/board/list?pageNum=1&amount=30";
+	    }
+	});
+	
 });
 </script>
 
@@ -41,7 +56,16 @@ $(document).ready(function(){
 
 	<bd:navbar></bd:navbar>
 	
-	<h1>글 목록</h1>
+	<form class="form-inline" action="list">
+		<h1 style="display: inline-block;">글 목록</h1>
+		
+		<select class="form-control" id="pageUnit" name="pageUnit" onchange="Change(1)">  <!-- name 을 amount로 바꾸고 onchange를 this.form.submit()로 바꿔도 작동한다 -->
+			<option value="10" <c:if test="${cri.amount == 10}">selected="selected"</c:if>>10개씩 보기</option>
+	        <option value="20" <c:if test="${cri.amount == 20}">selected="selected"</c:if>>20개씩 보기</option>
+	        <option value="30" <c:if test="${cri.amount == 30}">selected="selected"</c:if>>30개씩 보기</option>
+		</select>
+	</form>
+	
 	<table class="table table-striped">
 		<thead>
 			<tr class="text-center">
@@ -62,7 +86,10 @@ $(document).ready(function(){
 						<c:param name="bno" value="${board.bno }"></c:param>
 						<c:param name="pageNum" value="${pageMaker.cri.pageNum }"></c:param>
 						<c:param name="amount" value="${pageMaker.cri.amount }"></c:param>
+						<c:param name="type" value="${pageMaker.cri.type }"></c:param>
+						<c:param name="keyword" value="${pageMaker.cri.keyword }"></c:param>
 					</c:url>
+					
 						<a href="${getUrl }">
 							${board.title } 
 						</a>
@@ -90,7 +117,7 @@ $(document).ready(function(){
 	 </c:if>
 	   
 	   <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="num" >
-	   	<li class="page-item"><a class="page-link" 
+	   	<li class="page-item ${num == cri.pageNum ? 'active' : '' }"><a class="page-link" 
 	   	<%-- href="${appRoot }/board/list?pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount }" --%>
 	   	href="${num }">${num }</a></li>
 	   </c:forEach>
@@ -107,6 +134,8 @@ $(document).ready(function(){
 		<form id="actionForm" action="${appRoot }/board/list" method="get">
 			<input name="pageNum" value="${pageMaker.cri.pageNum }">
 			<input name="amount" value="${pageMaker.cri.amount }">
+			<input name="type" value="${pageMaker.cri.type }">
+			<input name="keyword" value="${pageMaker.cri.keyword }">
 		</form>
 	</div>
 	

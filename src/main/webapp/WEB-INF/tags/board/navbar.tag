@@ -6,6 +6,8 @@
 	<c:if test="${not empty cri }">
 		<c:param name="pageNum" value="${cri.pageNum }"></c:param>
 		<c:param name="amount" value="${cri.amount }"></c:param>
+		<c:param name="keyword" value="${cri.keyword }"></c:param>
+		<c:param name="type" value="${cri.type }"></c:param>
 	</c:if>
 </c:url>
 
@@ -17,7 +19,7 @@
 </c:url>
 
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffff6e;">
-  <a class="navbar-brand" href="#">스프링 게시판</a>
+  <a class="navbar-brand" href="${appRoot }/board/list">스프링 게시판</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -32,4 +34,27 @@
       </li>
     </ul>
   </div>
+  
+  
+  <form action="${listUrl }" method="get" class="form-inline">
+  <select name="type" class="form-control mr-sm-2">
+  	<option value="">--</option>
+  	<option value="T" ${cri.type == "T" ? 'selected' : '' }>제목</option> <!-- 이거 그 향상된 if문 알지? -->
+  	<option value="C" ${cri.type == "C" ? 'selected' : '' }>내용</option>
+  	<option value="W" ${cri.type == "W" ? 'selected' : '' }>작성자</option>
+  	<option value="TC" ${cri.type == "TC" ? 'selected' : '' }>제목 or 내용</option>
+  	<option value="TW" ${cri.type == "TW" ? 'selected' : '' }>제목 or 작성자</option>
+  	<option value="TWC" ${cri.type == "twc" ? 'selected' : '' }>제목 or 내용 or 작성자</option>
+  </select>
+  
+    <input value="${cri.keyword }" name="keyword" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    
+    <input type="hidden" name="pageNum" value="1">
+    <input type="hidden" name="amount" value="${cri.amount }">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>
+  
+  
+  
 </nav>
