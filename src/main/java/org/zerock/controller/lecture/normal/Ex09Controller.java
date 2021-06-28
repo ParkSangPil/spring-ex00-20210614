@@ -1,4 +1,4 @@
-package org.zerock.controller.lecture;
+package org.zerock.controller.lecture.normal;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
