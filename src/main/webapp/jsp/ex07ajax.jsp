@@ -71,6 +71,8 @@
 	</script>
 	<button id="btn3">BTN3</button>
 	
+	
+	
 	<script type="text/javascript">
 	$(function(){
 		$("#Sang").click(function(){
@@ -81,9 +83,20 @@
 				}
 			})
 		})
+		$("#Sang2").click(function(){
+			$.ajax({
+				url: "${appRoot}/rest07/Sang2",
+				success: function(ip){
+					console.log(ip);
+				}
+			})
+		})
 	})
 	</script>
 	<button id="Sang">Sang</button>
+	<button id="Sang2">Sang2</button>
+	
+	
 	
 	<script type="text/javascript">
 	$(function(){

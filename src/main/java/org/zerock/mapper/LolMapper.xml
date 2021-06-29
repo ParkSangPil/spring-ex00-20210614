@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.zerock.mapper.LolMapper">
+
+  <insert id="insert">
+  	INSERT INTO 
+  		lol_board (teamn, teamk, teamd, teama, teamc, victory)
+  	VALUES 
+  		(#{team11}, #{team11k}, #{team11d}, #{team11a}, #{team11c}, #{victory1}),
+  		(#{team12}, #{team12k}, #{team12d}, #{team12a}, #{team12c}, #{victory1}),
+  		(#{team13}, #{team13k}, #{team13d}, #{team13a}, #{team13c}, #{victory1}),
+  		(#{team14}, #{team14k}, #{team14d}, #{team14a}, #{team14c}, #{victory1}),
+  		(#{team15}, #{team15k}, #{team15d}, #{team15a}, #{team15c}, #{victory1}),
+  		(#{team21}, #{team21k}, #{team21d}, #{team21a}, #{team21c}, #{victory2}),
+  		(#{team22}, #{team22k}, #{team22d}, #{team22a}, #{team22c}, #{victory2}),
+  		(#{team23}, #{team23k}, #{team23d}, #{team23a}, #{team23c}, #{victory2}),
+  		(#{team24}, #{team24k}, #{team24d}, #{team24a}, #{team24c}, #{victory2}),
+  		(#{team25}, #{team25k}, #{team25d}, #{team25a}, #{team25c}, #{victory2})
+  </insert>
+  
+  </mapper>

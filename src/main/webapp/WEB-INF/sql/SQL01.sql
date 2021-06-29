@@ -12,12 +12,11 @@ CREATE table tbl_board (
 
 CREATE table lol_board (
 	bno INT PRIMARY KEY AUTO_INCREMENT,
-    team1 VARCHAR(2000) not NULL,
-    team2 VARCHAR(2000) not null,
-    writer VARCHAR(50) not null,
-    regdata TIMESTAMP DEFAULT NOW(),
-    updatedate TIMESTAMP DEFAULT NOW()
+    team VARCHAR(255) not NULL,
+    champ VARCHAR(255) not NUll,
+    regdata TIMESTAMP DEFAULT NOW()
 );
+DROP TABLE lol_board;
 
 SELECT * FROM tbl_board;
 

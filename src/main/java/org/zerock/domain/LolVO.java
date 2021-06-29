@@ -8,8 +8,11 @@ import lombok.Data;
 public class LolVO {
 
 	private int bno;
-	private String team1;
-	private String team2;
-	private String winner;
+	private String teamn;
+	private int teamk;
+	private int teamd;
+	private int teama;
+	private String teamc;
+	private String victory;
 	private Date regdate;
 }
