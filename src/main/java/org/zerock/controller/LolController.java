@@ -1,11 +1,15 @@
 package org.zerock.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.zerock.domain.Criteria;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.domain.LolVO;
 import org.zerock.service.LolService;
 
@@ -26,12 +30,28 @@ public class LolController {
 		
 	}
 	
-	@PostMapping("/register")
-	public String register(LolVO lol) {
-		service.register(lol);
+	@RequestMapping("/register")
+	public String register(@RequestParam Map<String, LolVO> map, HttpServletRequest request) {
+		log.info(map);
 		
-		return "${appRoot}/sample/lol";
+		Map<String,LolVO> map = new HashMap<String,LolVO>();
+		// 이걸 10번????
+		map.put("1", request.getParameter("LolVO"));
+		
+		
+//		service.register(list); 
+		
+		return "redirect:/sample/lol";
 		
 	}
+	
+	/*
+	 * @PostMapping("/register") public String register(LolVO lol, Map<Integer,
+	 * LolVO> map) {
+	 * 
+	 * service.register(lol);
+	 * 
+	 * return "redirect:/sample/lol"; }
+	 */
 	
 }

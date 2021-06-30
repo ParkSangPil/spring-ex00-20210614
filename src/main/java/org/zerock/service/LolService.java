@@ -1,10 +1,11 @@
 package org.zerock.service;
 
-import org.zerock.domain.LolVO;
+import java.util.Map;
 
+import org.zerock.domain.LolVO;
 
 public interface LolService {
 
-	public void register(LolVO lol);
+	public int register(LolVO lol);
 
 }

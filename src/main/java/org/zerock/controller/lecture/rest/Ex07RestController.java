@@ -58,12 +58,12 @@ public class Ex07RestController {
 	
 	@RequestMapping("/Sang")
 	public static String getIp(){ 
-		String result = null; 
-		try { 
-			result = InetAddress.getLocalHost().getHostAddress(); 
-		} catch (UnknownHostException e) {
-			result = ""; 
-		}
+	String result = null; 
+	try { 
+		result = InetAddress.getLocalHost().getHostAddress(); 
+	} catch (UnknownHostException e) {
+		result = ""; 
+	}
 	System.out.println(result); 
 	return result;
 	}

@@ -18,14 +18,14 @@ $(function(){
 		$("#vic1").val("승")
 	})
 	$("#vic2").change(function(){
-		$("#vic1").val("패")
 		$("#vic2").val("승")
+		$("#vic1").val("패")
 	})
 	
 	$("#btn5").click(function(e){
 		e.preventDefault();
-		if($("#vic1").is(:"checked") || $("vic2").is(:"checked")){
-			$(this).submit();
+		if($("#vic1").is(":checked") || $("#vic2").is(":checked")){
+			$("#form1").submit();
 		}else{
 			alert("승리 여부를 선택 하지 않았습니다.");		
 		}
@@ -36,7 +36,7 @@ $(function(){
 </head>
 <body>
 <div class="container mt-5">
-	<form action="${appRoot }/sample/register" method="post">
+	<form id="form1" action="${appRoot }/sample/register" method="post">
 	<h1 class="row justify-content-center">lol</h1>
 	
 	<div class="row justify-content-center mt-5">
