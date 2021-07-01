@@ -1,5 +1,6 @@
 package org.zerock.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import lombok.Data;
@@ -15,4 +16,9 @@ public class LolVO {
 	private String teamc;
 	private String victory;
 	private Date regdate;
+	
+//	public ArrayList<LolVO> getTypeArr(){
+//		ArrayList<LolVO> list = new ArrayList<>();
+//		return list;
+//	}
 }

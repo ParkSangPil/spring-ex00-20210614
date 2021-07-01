@@ -5,15 +5,24 @@
   
 <mapper namespace="org.zerock.mapper.LolMapper">
 
-	<insert id="insertList" parameterType="map">
+	<insert id="insertList" parameterType="list">
     
-    <![CDATA[
 	INSERT INTO 
-  		lol_board (teamn, teamk, teamd, teama, teamc, victory)
+  		lol_board (name, K, D, A, champ, victory)
   	VALUES
-  		(#{teamn}, #{teamk}, #{teamd}, #{teama}, #{teamc}, #{victory})
-    ]]>
-
+  	<trim suffixOverrides=",">
+  		<foreach collection="list" item="item" separator=",">
+  	(
+	        #{item.teamn}, 
+	        #{item.teamk},
+	        #{item.teamd},
+	        #{item.teama},
+	        #{item.teamc},
+	        #{item.victory}
+    )
+    	</foreach>
+    </trim>
+    
 	</insert>
 
 

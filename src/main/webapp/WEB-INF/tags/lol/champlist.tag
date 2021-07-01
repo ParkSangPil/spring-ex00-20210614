@@ -5,7 +5,7 @@
 
 
 <div style="text-align: center;" type="text" placeholder="champ" aria-describedby="basic-addon1" class="input-group">
-<select name="${id }" class="form-control">
+<select name="${id }" class="form-control lol-champ-select">
 	<option value="" selected="selected">champ</option>
 	<option value="가렌">가렌</option>
 	<option value="갈리오">갈리오</option>

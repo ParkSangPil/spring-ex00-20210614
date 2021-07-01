@@ -17,4 +17,6 @@ public interface ReplyMapper {
 	public int update(ReplyVO rno);
 	
 	public List<ReplyVO> getList(Long bno);
+	
+	public int getCountByBno(Long bno);
 }

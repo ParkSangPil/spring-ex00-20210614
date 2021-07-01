@@ -1,12 +1,13 @@
 package org.zerock.mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.zerock.domain.LolVO;
 
 public interface LolMapper {
 
-	public List<LolVO> insertList();
+	public int insertList(ArrayList<LolVO> list);
 	
-	public int insert(LolVO lol);
+//	public int insert(LolVO lol);
 }

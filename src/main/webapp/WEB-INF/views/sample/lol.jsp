@@ -16,20 +16,83 @@ $(function(){
 	$("#vic1").change(function(){
 		$("#vic2").val("패")
 		$("#vic1").val("승")
+		$("#span1").html("<h4>승리</h4>")
+		$("#span2").html("<h4>패배</h4>")/* text 도 됨 */
 	})
 	$("#vic2").change(function(){
 		$("#vic2").val("승")
 		$("#vic1").val("패")
+		$("#span1").html("<h4>패배</h4>")
+		$("#span2").html("<h4>승리</h4>")
 	})
 	
 	$("#btn5").click(function(e){
 		e.preventDefault();
 		if($("#vic1").is(":checked") || $("#vic2").is(":checked")){
-			$("#form1").submit();
+			//$("#form1").submit();
+			var data = getData();
+			
+			$.ajax({
+				type: "post",
+				url: "${appRoot}/sample/register2",
+				data: JSON.stringify(data),
+				contentType: "application/json",
+				success: function() {
+					console.log("성공");
+				},
+				error: function() {
+					console.log("실패");
+				}
+				
+				
+			});
 		}else{
 			alert("승리 여부를 선택 하지 않았습니다.");		
 		}
+		
+		
 	})
+	
+	function getData() {
+		// .lol-member-select
+		// .lol-kill-input
+		// .lol-death-input
+		// .lol-assist-input
+		// .lol-champ-select
+		// .lol-victory-input
+		
+		var lolMemberSelect = $(".lol-member-select");
+		var lolKillInput = $(".lol-kill-input");
+		var lolDeathInput = $(".lol-death-input");
+		var lolAssistInput = $(".lol-assist-input");
+		var lolChampSelect = $(".lol-champ-select");
+		var lolVictoryInput = $(".lol-victory-input");
+		
+		var arr = [];
+		for (var i = 0; i < 5; i++) {
+			var item = {};
+			item.teamn = lolMemberSelect.eq(i).val();
+			item.teamk = lolKillInput.eq(i).val();
+			item.teamd = lolDeathInput.eq(i).val();
+			item.teama = lolAssistInput.eq(i).val();
+			item.teamc = lolChampSelect.eq(i).val();
+			item.victory = lolVictoryInput.eq(0).val();
+			arr.push(item);
+		}
+		
+		for (var i = 5; i < 10; i++) {
+			var item = {};
+			item.teamn = lolMemberSelect.eq(i).val();
+			item.teamk = lolKillInput.eq(i).val();
+			item.teamd = lolDeathInput.eq(i).val();
+			item.teama = lolAssistInput.eq(i).val();
+			item.teamc = lolChampSelect.eq(i).val();
+			item.victory = lolVictoryInput.eq(1).val();
+			arr.push(item);
+		}
+		
+		return arr;
+	}
 })
 </script>
 
@@ -59,31 +122,31 @@ $(function(){
 		
 		<div class="col-1">
 		
-		<input name="team11k" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team12k" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team13k" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team14k" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team15k" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team11k" style="text-align: center;" type="text" class="form-control lol-kill-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team12k" style="text-align: center;" type="text" class="form-control lol-kill-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team13k" style="text-align: center;" type="text" class="form-control lol-kill-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team14k" style="text-align: center;" type="text" class="form-control lol-kill-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team15k" style="text-align: center;" type="text" class="form-control lol-kill-input" placeholder="0" aria-describedby="basic-addon1">
 		
 		</div>
 		
 		<div class="col-1">
 		
-		<input name="team11d" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team12d" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team13d" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team14d" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team15d" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team11d" style="text-align: center;" type="text" class="form-control lol-death-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team12d" style="text-align: center;" type="text" class="form-control lol-death-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team13d" style="text-align: center;" type="text" class="form-control lol-death-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team14d" style="text-align: center;" type="text" class="form-control lol-death-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team15d" style="text-align: center;" type="text" class="form-control lol-death-input" placeholder="0" aria-describedby="basic-addon1">
 		
 		</div>
 		
 		<div class="col-1">
 		
-		<input name="team11a" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team12a" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team13a" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team14a" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team15a" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team11a" style="text-align: center;" type="text" class="form-control lol-assist-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team12a" style="text-align: center;" type="text" class="form-control lol-assist-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team13a" style="text-align: center;" type="text" class="form-control lol-assist-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team14a" style="text-align: center;" type="text" class="form-control lol-assist-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team15a" style="text-align: center;" type="text" class="form-control lol-assist-input" placeholder="0" aria-describedby="basic-addon1">
 		
 		</div>
 		
@@ -101,10 +164,10 @@ $(function(){
 		<div class="input-group col-2">
 			<div class="input-group-prepend">
 				<div class="input-group-text">
-					<input id="vic1" type="radio" name="victory1" value="승">
+					<input id="vic1" type="radio" name="victory" value="승" class="lol-victory-input">
 				</div>
 			</div>
-			<span style="padding-top:50%; display: table-cell; height:auto; text-align: center; vertical-align: middle;" readonly="readonly" class="form-control" >승리</span>
+			<span id="span1" style="padding-top:50%; display: table-cell; height:auto; text-align: center; vertical-align: middle;" readonly="readonly" class="form-control"><h4>승리</h4></span>
 		</div>
 		
 	</div>
@@ -137,31 +200,31 @@ $(function(){
 		
 		<div class="col-1">
 		
-		<input name="team21k" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team22k" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team23k" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team24k" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team25k" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team21k" style="text-align: center;" type="text" class="form-control lol-kill-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team22k" style="text-align: center;" type="text" class="form-control lol-kill-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team23k" style="text-align: center;" type="text" class="form-control lol-kill-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team24k" style="text-align: center;" type="text" class="form-control lol-kill-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team25k" style="text-align: center;" type="text" class="form-control lol-kill-input" placeholder="0" aria-describedby="basic-addon1">
 		
 		</div>
 		
 		<div class="col-1">
 		
-		<input name="team21d" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team22d" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team23d" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team24d" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team25d" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team21d" style="text-align: center;" type="text" class="form-control lol-death-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team22d" style="text-align: center;" type="text" class="form-control lol-death-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team23d" style="text-align: center;" type="text" class="form-control lol-death-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team24d" style="text-align: center;" type="text" class="form-control lol-death-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team25d" style="text-align: center;" type="text" class="form-control lol-death-input" placeholder="0" aria-describedby="basic-addon1">
 		
 		</div>
 		
 		<div class="col-1">
 		
-		<input name="team21a" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team22a" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team23a" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team24a" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
-		<input name="team25a" style="text-align: center;" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team21a" style="text-align: center;" type="text" class="form-control lol-assist-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team22a" style="text-align: center;" type="text" class="form-control lol-assist-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team23a" style="text-align: center;" type="text" class="form-control lol-assist-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team24a" style="text-align: center;" type="text" class="form-control lol-assist-input" placeholder="0" aria-describedby="basic-addon1">
+		<input name="team25a" style="text-align: center;" type="text" class="form-control lol-assist-input" placeholder="0" aria-describedby="basic-addon1">
 		
 		</div>
 		
@@ -178,15 +241,13 @@ $(function(){
 		<div class="input-group col-2">
 			<div class="input-group-prepend">
 				<div class="input-group-text">
-					<input id="vic2" type="radio" name="victory2" value="승">
+					<input id="vic2" type="radio" name="victory" value="승"  class="lol-victory-input">
 				</div>
 			</div>
-			<span style="padding-top:50%; display: table-cell; height:auto; text-align: center; vertical-align: middle;" readonly="readonly" class="form-control" >승리</span>
+			<span id="span2" style="padding-top:50%; display: table-cell; height:auto; text-align: center; vertical-align: middle;" readonly="readonly" class="form-control"><h4>승리</h4></span>
 		</div>
 		
 	</div>
-	
-	
 	
 	<div class="row justify-content-center mt-5">
 		<div class="col-10">
