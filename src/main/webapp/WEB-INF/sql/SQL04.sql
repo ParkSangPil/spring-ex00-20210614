@@ -33,8 +33,11 @@ CREATE TABLE lol_board(
 
 drop table lol_board;
 
+-- 여기다!!! 여기야 ㅅㅂ 여기서 작업해!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 DESC lol_board;
 SELECT * FROM lol_board;
+DELETE from lol_board;
+ALTER TABLE lol_board AUTO_INCREMENT = 1;
 
 SELECT b.bno, b.title, b.content, b.writer, b.regdate, b.updatedate, count(r.rno)
 FROM tbl_board b left join tbl_reply r ON b.bno = r.bno

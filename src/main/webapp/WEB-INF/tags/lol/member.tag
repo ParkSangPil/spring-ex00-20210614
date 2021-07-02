@@ -5,7 +5,7 @@
 
 <div class="input-group">
 <select name="${id }" class="form-control lol-member-select">
-	<option selected="selected"></option>
+	<option selected="selected"> </option>
 	<option value="깜시">깜시</option>
 	<option value="상필">상필</option>
 	<option value="짱꺠">짱깨</option>

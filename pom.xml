@@ -13,8 +13,27 @@
 		<org.springframework-version>5.0.7.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
+		<aws.java.sdk.version>2.16.1</aws.java.sdk.version>
 	</properties>
+	
+	  <dependencyManagement>
+	    <dependencies>
+	      <dependency>
+	        <groupId>software.amazon.awssdk</groupId>
+	        <artifactId>bom</artifactId>
+	        <version>${aws.java.sdk.version}</version>
+	        <type>pom</type>
+	        <scope>import</scope>
+	      </dependency>
+	    </dependencies>
+	  </dependencyManagement>
+	
 	<dependencies>
+		<dependency>
+	      <groupId>software.amazon.awssdk</groupId>
+	      <artifactId>s3</artifactId>
+	    </dependency>
+	    
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
 		<dependency>
 			<groupId>org.springframework</groupId>

@@ -3,9 +3,11 @@ package org.zerock.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
 import org.zerock.mapper.BoardMapper;
+import org.zerock.mapper.ReplyMapper;
 
 import lombok.AllArgsConstructor;
 
@@ -14,6 +16,7 @@ import lombok.AllArgsConstructor;
 public class BoardServiceImpl implements BoardService{
 
 	private BoardMapper mapper;
+	private ReplyMapper replyMapper;
 	
 //	@Autowired  없어도 된다 lombok 때문에 아래 코드도 안해도 됨
 //	public BoardServiceImpl(BoardMapper mapper) {
@@ -37,8 +40,16 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
+	@Transactional
 	public boolean remove(Long bno) {
-		return mapper.delete(bno) == 1;
+		// 댓글 삭제
+		replyMapper.deleteByBno(bno);
+		
+		//게시물 삭제
+		int cnt = mapper.delete(bno);
+		
+		
+		return cnt == 1;
 	}
 
 //	@Override

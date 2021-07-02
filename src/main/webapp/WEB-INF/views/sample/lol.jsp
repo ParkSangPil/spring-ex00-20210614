@@ -26,26 +26,40 @@ $(function(){
 		$("#span2").html("<h4>승리</h4>")
 	})
 	
+	var count1 = 0;
+	$(".lol-member-select").change(function(){
+		count1 = count1 + 1;
+	})
+	
 	$("#btn5").click(function(e){
 		e.preventDefault();
 		if($("#vic1").is(":checked") || $("#vic2").is(":checked")){
-			//$("#form1").submit();
-			var data = getData();
+			if(count1 > 9){
+				
+				//$("#form1").submit();
+				var data = getData();
+				
+				$.ajax({
+					type: "post",
+					url: "${appRoot}/sample/register2",
+					data: JSON.stringify(data),
+					contentType: "application/json",
+					success: function() {
+						console.log("성공");
+					},
+					error: function() {
+						console.log("실패");
+					}
+				});
+				
+				alert("입력 완료.");
+				location.reload();
+				
+			}else{
+				alert("모든 선수를 입력하지 않았습니다.");
+			}
 			
-			$.ajax({
-				type: "post",
-				url: "${appRoot}/sample/register2",
-				data: JSON.stringify(data),
-				contentType: "application/json",
-				success: function() {
-					console.log("성공");
-				},
-				error: function() {
-					console.log("실패");
-				}
-				
-				
-			});
+			
 		}else{
 			alert("승리 여부를 선택 하지 않았습니다.");		
 		}
