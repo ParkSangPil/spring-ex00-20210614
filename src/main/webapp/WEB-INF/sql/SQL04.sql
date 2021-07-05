@@ -39,6 +39,15 @@ SELECT * FROM lol_board;
 DELETE from lol_board;
 ALTER TABLE lol_board AUTO_INCREMENT = 1;
 
+select name, 
+	COUNT(name) as '총판수',
+    count(if(victory='승',1,null)) as '승리 횟수', 
+    truncate( (K+A)/D,0 ) as 'kda',
+	truncate(count(if(victory='승',1,null)) / COUNT(name) * 100 , 0) as winrate
+from lol_board 
+GROUP BY name
+ORDER BY winrate DESC;
+
 SELECT b.bno, b.title, b.content, b.writer, b.regdate, b.updatedate, count(r.rno)
 FROM tbl_board b left join tbl_reply r ON b.bno = r.bno
 GROUP BY b.bno

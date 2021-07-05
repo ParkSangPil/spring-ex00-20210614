@@ -8,7 +8,7 @@
 	<option selected="selected"> </option>
 	<option value="깜시">깜시</option>
 	<option value="상필">상필</option>
-	<option value="짱꺠">짱깨</option>
+	<option value="짱깨">짱깨</option>
 	<option value="이승">이승</option>
 	<option value="쥐">쥐</option>
 	<option value="게이">게이</option>

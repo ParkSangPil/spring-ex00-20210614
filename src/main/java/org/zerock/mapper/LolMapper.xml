@@ -34,6 +34,51 @@
   		(#{teamn}, #{teamk}, #{teamd}, #{teama}, #{teamc}, #{victory})
 	</insert> 
 -->
+
+  <select id="getList" resultType="org.zerock.domain.LolVO2">
+    
+    <!-- <![CDATA[
+	SELECT 
+		bno bno,
+		name teamn,
+		K teamk,
+		D teamd,
+		A teama,
+		champ teamc,
+		victory victory,
+		updatedate updateDate
+
+		FROM lol_board
+		
+		WHERE bno > 0 Order By bno DESC
+    ]]> 이 안에 있는건 단순한 텍스트로 해석된다. 188p -->
+    
+    select name, 
+		COUNT(name) total,
+	    count(if(victory='승',1,null)) wincnt, 
+	    truncate( (K+A)/D,0 ) kda,
+		truncate(count(if(victory='승',1,null)) / COUNT(name) * 100 , 0) winrate
+	FROM lol_board 
+	GROUP BY name
+	ORDER BY winrate DESC, kda desc, total desc;
+
+  </select>
+  
+  <select id="getChamp" resultType="org.zerock.domain.LolVO2">
+  	SELECT champ,
+  		COUNT(champ) total,
+  		truncate(count(if(victory='승',1,null)) / COUNT(name) * 100 , 0) winrate
+  	FROM lol_board
+  	GROUP BY champ
+  	HAVING winrate != 100
+  	ORDER BY winrate DESC, total desc
+  	LIMIT 0, 15;
+  </select>
+  
+  <insert id="registerOTP" parameterType="String">
+  	INSERT INTO OTP_board (OTP)
+  	VALUES (#{result})
+  </insert>
   
   
 </mapper>

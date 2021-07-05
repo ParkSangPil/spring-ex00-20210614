@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
@@ -50,10 +51,13 @@ public class BoardController {
 	}
 	
 	@PostMapping("/register")
-	public String register(BoardVO board, RedirectAttributes rttr) { // 아래 주석이 컬럼들을 자동으로 넣어줌
+	public String register(BoardVO board,
+			@RequestParam("file") MultipartFile file, RedirectAttributes rttr) { // 아래 주석이 컬럼들을 자동으로 넣어줌
+		
+		board.setFileName(file.getOriginalFilename());
 		
 		// service에게 등록업무 시키고
-		service.register(board); // board는 title,content,writer 을 가지고 있지
+		service.register(board, file); // board는 title,content,writer 을 가지고 있지
 		
 		// redirect목적지로 정보 전달
 //		rttr.addFlashAttribute("result", board.getBno()); 강사님은 또 다르게 만들었다 참고 ㄱㄱ
@@ -81,12 +85,13 @@ public class BoardController {
 	}
 	
 	@PostMapping("/modify")
-	public String modify(BoardVO board, RedirectAttributes rttr, Criteria cri) {
+	public String modify(BoardVO board, RedirectAttributes rttr, Criteria cri
+						, @RequestParam("file") MultipartFile file) {
 		// request parameter 수집
 		
 		
 		// service 일 시킴
-		boolean success = service.modify(board);
+		boolean success = service.modify(board, file);
 		
 		// 결과를 model 또는 FlashMap에 넣고
 		rttr.addFlashAttribute("result", "수정");

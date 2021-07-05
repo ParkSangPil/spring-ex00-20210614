@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="lol" tagdir="/WEB-INF/tags/lol" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -269,6 +270,58 @@ $(function(){
 		</div>
 	</div>
 	</form>
+	
+	<div class="row container mt-5">
+		<div class="col-3 ">
+			<table class="table">
+				<thead>
+				<tr>
+					<th style="text-align: center;" scope="col">#</th>
+					<th style="text-align: center;" scope="col">이름</th>
+					<th style="text-align: center;" scope="col">승률</th>
+					<th style="text-align: center;" scope="col">KDA</th>
+				</tr>
+				</thead>
+				
+				<tbody> 
+					<c:forEach items="${list55 }" var="lol" varStatus="status">
+					<tr>
+						<td style="text-align: center;">${status.index + 1 }</td>
+						<td style="text-align: center;">${lol.name }</td>
+						<td style="text-align: center;">${lol.winrate } </td>
+						<td style="text-align: center;">${lol.kda }</td>
+					</tr>
+					</c:forEach> 
+				</tbody>
+				
+			</table>
+		</div>
+		
+		<div class="col-3 ">
+			<table class="table">
+				<thead>
+				<tr>
+					<th style="text-align: center;" scope="col">#</th>
+					<th style="text-align: center;" scope="col">Champ</th>
+					<th style="text-align: center;" scope="col">승률</th>
+				</tr>
+				</thead>
+				
+				<tbody> 
+					<c:forEach items="${list66 }" var="lol2" varStatus="status">
+					<tr>
+						<td style="text-align: center;">${status.index + 1 }</td>
+						<td style="text-align: center;">${lol2.champ }</td>
+						<td style="text-align: center;">${lol2.winrate } </td>
+					</tr>
+					</c:forEach>
+				</tbody>
+				
+			</table>
+		</div>
+	</div>
+				
+					
 	
 </div>
 
