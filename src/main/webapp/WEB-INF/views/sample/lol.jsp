@@ -112,7 +112,7 @@ $(function(){
 </script>
 
 </head>
-<body>
+<body style="background-color: rgb(249 247 232);">
 <div class="container mt-5">
 	<form id="form1" action="${appRoot }/sample/register" method="post">
 	<h1 class="row justify-content-center">lol</h1>
@@ -272,7 +272,7 @@ $(function(){
 	</form>
 	
 	<div class="row container mt-5">
-		<div class="col-4">
+		<div class="col-5">
 			<table class="table">
 				<thead>
 				<tr>
@@ -280,6 +280,7 @@ $(function(){
 					<th style="text-align: center;" scope="col">이름</th>
 					<th style="text-align: center;" scope="col">승률</th>
 					<th style="text-align: center;" scope="col">KDA</th>
+					<th style="text-align: center;" scope="col">참여</th>
 				</tr>
 				</thead>
 				
@@ -288,8 +289,9 @@ $(function(){
 					<tr>
 						<td style="text-align: center;">${status.index + 1 }</td>
 						<td style="text-align: center;">${lol.name }</td>
-						<td style="text-align: center;">${lol.winrate } </td>
+						<td style="text-align: center;">${lol.winrate } %</td>
 						<td style="text-align: center;">${lol.kda }</td>
+						<td style="text-align: center;">${lol.total }</td>
 					</tr>
 					</c:forEach> 
 				</tbody>
@@ -297,7 +299,7 @@ $(function(){
 			</table>
 		</div>
 		
-		<div class="col-4">
+		<div class="col-3">
 		
 		</div>
 		
