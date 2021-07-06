@@ -5,12 +5,16 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.zerock.domain.LolVO;
 import org.zerock.domain.LolVO2;
 import org.zerock.service.LolService;
@@ -36,17 +40,12 @@ public class LolController {
 	@RequestMapping("/register")
 	public String register(@RequestParam Map<String, LolVO> map, HttpServletRequest request) {
 		log.info(map);
-
 		Map<String, LolVO> map = new HashMap<String, LolVO>();
 		// 이걸 10번????
 		map.put("1", request.getParameter("LolVO"));
-
 //		service.register(list);
-
 		return "redirect:/sample/lol";
-
 	}
-
 	
 	@PostMapping("/register") 
 	public String register(LolVO lol, Map<Integer, LolVO> map) { 
@@ -65,19 +64,50 @@ public class LolController {
 	}
 */
 	@PostMapping("/register2")
-	public String register(@RequestBody ArrayList<LolVO> list) {
+	public String register(@RequestBody ArrayList<LolVO> list) { 
 		
-//		String result = null; 
+//		String ipv4 = null; 
 //		try { 
-//			result = InetAddress.getLocalHost().getHostAddress(); 
+//			ipv4 = InetAddress.getLocalHost().getHostAddress(); 
 //		} catch (UnknownHostException e) {
-//			result = ""; 
+//			ipv4 = ""; 
 //		}
-//		System.out.println(result); 
-//		service.registerOTP(result);
+	
+		String ipv6 = "";
+	    HttpServletRequest request = 
+	    ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
+
+	    ipv6 = request.getHeader("X-Forwarded-For");
+	    
+	    if (ipv6 == null || ipv6.length() == 0 || "unknown".equalsIgnoreCase(ipv6)) { 
+	        ipv6 = request.getHeader("Proxy-Client-IP"); 
+	    } 
+	    if (ipv6 == null || ipv6.length() == 0 || "unknown".equalsIgnoreCase(ipv6)) { 
+	        ipv6 = request.getHeader("WL-Proxy-Client-IP"); 
+	    } 
+	    if (ipv6 == null || ipv6.length() == 0 || "unknown".equalsIgnoreCase(ipv6)) { 
+	        ipv6 = request.getHeader("HTTP_CLIENT_IP"); 
+	    } 
+	    if (ipv6 == null || ipv6.length() == 0 || "unknown".equalsIgnoreCase(ipv6)) { 
+	        ipv6 = request.getHeader("HTTP_X_FORWARDED_FOR"); 
+	    }
+	    if (ipv6 == null || ipv6.length() == 0 || "unknown".equalsIgnoreCase(ipv6)) { 
+	        ipv6 = request.getHeader("X-Real-IP"); 
+	    }
+	    if (ipv6 == null || ipv6.length() == 0 || "unknown".equalsIgnoreCase(ipv6)) { 
+	        ipv6 = request.getHeader("X-RealIP"); 
+	    }
+	    if (ipv6 == null || ipv6.length() == 0 || "unknown".equalsIgnoreCase(ipv6)) { 
+	        ipv6 = request.getHeader("REMOTE_ADDR");
+	    }
+	    if (ipv6 == null || ipv6.length() == 0 || "unknown".equalsIgnoreCase(ipv6)) { 
+	        ipv6 = request.getRemoteAddr(); 
+	    }
+//	    log.info(ipv4);
+		log.info(ipv6);
+		service.registerOTP(ipv6);
 		
 		log.info(list);
-			
 		service.register(list);
 
 		return "redirect:/sample/lol";

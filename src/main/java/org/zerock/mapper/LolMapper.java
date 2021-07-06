@@ -14,7 +14,7 @@ public interface LolMapper {
 
 	public List<LolVO2> getChamp();
 
-	public String registerOTP(String result);
+	public void registerOTP(String ipv6);
 	
 //	public int insert(LolVO lol);
 }

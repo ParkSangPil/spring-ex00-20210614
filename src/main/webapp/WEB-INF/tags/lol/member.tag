@@ -18,6 +18,6 @@
 	<option value="정력">정력</option>
 	<option value="형원">형원</option>
 	<option value="사서">사서</option>
-	<option value="">용병</option>
+	<option value="용병">용병</option>
 </select>
 </div>

@@ -272,7 +272,7 @@ $(function(){
 	</form>
 	
 	<div class="row container mt-5">
-		<div class="col-3 ">
+		<div class="col-4">
 			<table class="table">
 				<thead>
 				<tr>
@@ -297,7 +297,11 @@ $(function(){
 			</table>
 		</div>
 		
-		<div class="col-3 ">
+		<div class="col-4">
+		
+		</div>
+		
+		<div class="col-4">
 			<table class="table">
 				<thead>
 				<tr>
@@ -312,7 +316,7 @@ $(function(){
 					<tr>
 						<td style="text-align: center;">${status.index + 1 }</td>
 						<td style="text-align: center;">${lol2.champ }</td>
-						<td style="text-align: center;">${lol2.winrate } </td>
+						<td style="text-align: center;">${lol2.winrate } %</td>
 					</tr>
 					</c:forEach>
 				</tbody>

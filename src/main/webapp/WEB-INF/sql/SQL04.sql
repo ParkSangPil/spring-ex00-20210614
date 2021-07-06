@@ -30,14 +30,26 @@ CREATE TABLE lol_board(
     victory VARCHAR(20) DEFAULT "패",
     updateDate TIMESTAMP DEFAULT now()
 );
+ALTER TABLE lol_board ADD IPv6 VARCHAR(255);
+ALTER TABLE lol_board DROP COLUMN IPv6;
+
+CREATE TABLE lol_ip(
+	IPv6 VARCHAR(50) not null,
+	updateDate TIMESTAMP DEFAULT now()
+);
+desc lol_ip;
+SELECT * from lol_ip;
+DELETE from lol_ip;
+drop table lol_ip;
 
 drop table lol_board;
 
 -- 여기다!!! 여기야 ㅅㅂ 여기서 작업해!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 DESC lol_board;
 SELECT * FROM lol_board;
-DELETE from lol_board;
-ALTER TABLE lol_board AUTO_INCREMENT = 1;
+DELETE from lol_board
+where bno BETWEEN '81' and '90';
+ALTER TABLE lol_board AUTO_INCREMENT = 81;
 
 select name, 
 	COUNT(name) as '총판수',
@@ -55,7 +67,13 @@ ORDER BY b.bno desc
 limit 10, 10;
 
 
+UPDATE lol_board
+SET name = '용병'
+where name = '';
 
+UPDATE lol_board
+SET champ = '녹턴'
+where bno = 60;
 
 
 

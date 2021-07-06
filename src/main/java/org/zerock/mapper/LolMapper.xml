@@ -75,9 +75,9 @@
   	LIMIT 0, 15;
   </select>
   
-  <insert id="registerOTP" parameterType="String">
-  	INSERT INTO OTP_board (OTP)
-  	VALUES (#{result})
+  <insert id="registerOTP">
+  	INSERT INTO lol_ip (IPv6)
+  	VALUES (#{ipv6})
   </insert>
   
   

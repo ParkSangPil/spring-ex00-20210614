@@ -35,8 +35,8 @@ public class LolServiceImpl implements LolService{
 	}
 	
 	@Override
-	public String registerOTP(String result) {
-		return mapper.registerOTP(result);
+	public void registerOTP(String ipv6) {
+		mapper.registerOTP(ipv6);
 	}
 	
 	
