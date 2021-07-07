@@ -55,8 +55,8 @@
     
     select name, 
 		COUNT(name) total,
-	    count(if(victory='승',1,null)) wincnt, 
-	    truncate( (K+A)/D,0 ) kda,
+	    COUNT(if(victory='승',1,null)) wincnt,
+	    truncate((SUM(K) + SUM(A))/SUM(D) ,1 ) kda,
 		truncate(count(if(victory='승',1,null)) / COUNT(name) * 100 , 0) winrate
 	FROM lol_board 
 	GROUP BY name

@@ -9,6 +9,6 @@ public class LolVO2 {
 	private String champ;
 	private int total;
 	private int wincnt;
-	private int kda;
+	private double kda;
 	private int winrate;
 }

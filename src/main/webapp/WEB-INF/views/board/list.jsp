@@ -97,11 +97,11 @@ $(document).ready(function(){
 							</c:if>
 						</a>
 					</td>
-					<td>${board.writer } </td>
-					<td>
+					<td style="text-align: center;">${board.writerName } </td>
+					<td style="text-align: center;">
 						<fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${board.regdate }"/>
 					</td>
-					<td>
+					<td style="text-align: center;">
 						<fmt:formatDate pattern="yyyy-MM-dd [E요일] a hh:mm:ss" value="${board.updateDate }"/>
 					</td>
 				</tr>

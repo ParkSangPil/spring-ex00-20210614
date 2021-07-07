@@ -2,6 +2,7 @@ package org.zerock.controller;
 
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -85,6 +86,8 @@ public class BoardController {
 	}
 	
 	@PostMapping("/modify")
+	@PreAuthorize("principal.username == #board.writer") // 720쪽 아래에 로그인을 한 사람만 수정가능하게?
+//	@PreAuthorize("authication.name == #board.writer") // spring.io 
 	public String modify(BoardVO board, RedirectAttributes rttr, Criteria cri
 						, @RequestParam("file") MultipartFile file) {
 		// request parameter 수집
@@ -106,7 +109,9 @@ public class BoardController {
 	}
 	
 	@PostMapping("/remove")
+	@PreAuthorize("principal.username == #writer")
 	public String remove(@RequestParam("bno") Long bno, 
+						 @RequestParam("writer") String writer,
 						 RedirectAttributes rttr,
 						 Criteria cri) {
 		// parameter 수집
@@ -129,6 +134,7 @@ public class BoardController {
 	}
 	
 	@GetMapping("/register")
+	@PreAuthorize("isAuthenticated()") // 673쪽 식!
 	public void register(@ModelAttribute("cri") Criteria cri) {
 		
 	}

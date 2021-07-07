@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <meta charset="UTF-8">
 <meta name="viewport"
@@ -19,4 +20,7 @@
  --%>
  <script defer src="${pageContext.request.contextPath }/resources/js/all.js"></script>
  
- 
+ <%-- security info --%>
+ <sec:authorize access="isAuthenticated()">
+	 <sec:authentication property="principal" var="pinfo" scope="request" />
+ </sec:authorize>

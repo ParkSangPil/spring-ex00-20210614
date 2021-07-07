@@ -12,15 +12,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<bd:navbar></bd:navbar>
 <div class="container">
+<bd:navbar></bd:navbar>
 	<div class="row justify-content-center">
 		<div class="col-md-6 col-12">
 			<h1>로그인</h1>
 			<form action="${appRoot }/login" method="post">
 				<div class="form-group">
 					<label for="input1">이름</label>				
-					<input id="input1" class="form-control" name="username" />
+					<input id="input1" class="form-control" name="username" autofocus/>
 				</div>
 				<div class="form-group">
 					<label for="input2">패스워드</label>
@@ -28,10 +28,16 @@
 					class="form-control" name="password" />
 				</div>
 				
+				<div class="form-group form-check">
+					<input name="remember-me" type="checkbox" class="form-check-input" id="checkbox1"> <!-- name어트리뷰트가 가장 중요 -->
+					<label class="form-check-label" for="xheckbox1">로그인 유지</label>
+				</div>
+								
 				<input class="btn btn-primary" type="submit" value="로그인">
 			</form>
 		</div>
 	</div>	
+</div>
 
 </body>
 </html>

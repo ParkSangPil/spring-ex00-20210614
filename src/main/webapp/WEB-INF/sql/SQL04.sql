@@ -46,7 +46,7 @@ drop table lol_board;
 
 -- 여기다!!! 여기야 ㅅㅂ 여기서 작업해!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 DESC lol_board;
-SELECT * FROM lol_board;
+SELECT * FROM lol_board where name = '깜시';
 DELETE from lol_board
 where bno BETWEEN '81' and '90';
 ALTER TABLE lol_board AUTO_INCREMENT = 81;
@@ -78,7 +78,15 @@ where bno = 60;
 
 
 
-
+    select name, 
+		COUNT(name) total,
+	    COUNT(if(victory='승',1,null)) wincnt,
+        (SUM(K) + SUM(A))/SUM(D) kda2,
+        SUM((K + A)/D) kkk,
+		truncate(count(if(victory='승',1,null)) / COUNT(name) * 100 , 0) winrate
+	FROM lol_board 
+	GROUP BY name
+	ORDER BY winrate DESC, kda2 desc, total desc;
 
 
 

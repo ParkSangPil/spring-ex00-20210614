@@ -290,7 +290,7 @@ $(function(){
 						<td style="text-align: center;">${status.index + 1 }</td>
 						<td style="text-align: center;">${lol.name }</td>
 						<td style="text-align: center;">${lol.winrate } %</td>
-						<td style="text-align: center;">${lol.kda }</td>
+						<td style="text-align: center;">${lol.kda}</td>
 						<td style="text-align: center;">${lol.total }</td>
 					</tr>
 					</c:forEach> 
