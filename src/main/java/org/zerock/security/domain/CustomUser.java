@@ -12,11 +12,13 @@ import org.zerock.domain.AuthVO;
 import org.zerock.domain.MemberVO;
 
 import lombok.Getter;
+import lombok.Setter;
 
 // 책 668쪽
 public class CustomUser extends User{
 	
 	@Getter
+	@Setter
 	private MemberVO member;
 
 	public CustomUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {

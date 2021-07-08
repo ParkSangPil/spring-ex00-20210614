@@ -5,6 +5,11 @@
   
 <mapper namespace="org.zerock.mapper.BoardMapper">
 
+<delete id="removeByUserid">
+	DELETE FROM tbl_board
+	WHERE writer = #{userid}
+</delete>
+
 <sql id="criteria">
 	<where>
     	<foreach item="type" separator=" OR " collection="typeArr"> <!-- separator는 중간중간에 넣어주는거 -->

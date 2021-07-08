@@ -5,11 +5,30 @@
   
 <mapper namespace="org.zerock.mapper.MemberMapper">
 
+	<delete id="removeAuth">
+		DELETE FROM tbl_member_auth
+		WHERE userid = #{userid}
+	</delete>
+
+	<delete id="remove">
+		DELETE FROM tbl_member
+		WHERE userid = #{userid}
+	</delete>
+
+	<update id="update">
+		UPDATE tbl_member
+		SET userpw = #{userpw},
+			userName = #{userName},
+			updatedate = now()
+		WHERE
+			userid = #{userid}
+	</update>
+
 	<insert id="insert">
 		INSERT INTO tbl_member
 		(userid, userpw, username)
 		VALUES
-		(#{userid},#{userpw},#{username})
+		(#{userid},#{userpw},#{userName})
 	</insert>
 
 	<insert id="insertAuth">

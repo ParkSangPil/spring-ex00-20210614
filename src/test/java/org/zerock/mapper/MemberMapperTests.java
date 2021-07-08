@@ -82,6 +82,16 @@ public class MemberMapperTests {
 		assertTrue(encoder.matches("admin", vo.getUserpw()));
 	}
 	
+	@Test
+	public void textUpdate() {
+		MemberVO vo = mapper.read("얻고자 하는 사용자 id");
+		
+		String newpw = "";
+		vo.setUserpw(encoder.encode(newpw));
+		
+		assertEquals(1, mapper.update(vo));
+	}
+	
 	
 
 }

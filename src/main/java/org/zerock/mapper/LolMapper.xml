@@ -70,7 +70,7 @@
   		truncate(count(if(victory='승',1,null)) / COUNT(name) * 100 , 0) winrate
   	FROM lol_board
   	GROUP BY champ
-  	HAVING winrate != 100
+	HAVING winrate != 100
   	ORDER BY winrate DESC, total desc
   	LIMIT 0, 15;
   </select>

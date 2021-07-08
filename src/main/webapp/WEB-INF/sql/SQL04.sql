@@ -46,7 +46,7 @@ drop table lol_board;
 
 -- 여기다!!! 여기야 ㅅㅂ 여기서 작업해!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 DESC lol_board;
-SELECT * FROM lol_board where name = '깜시';
+SELECT * FROM lol_board where name = '이승';
 DELETE from lol_board
 where bno BETWEEN '81' and '90';
 ALTER TABLE lol_board AUTO_INCREMENT = 81;

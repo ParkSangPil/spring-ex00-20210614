@@ -21,6 +21,8 @@ create table tbl_member_auth (
 SELECT * from tbl_member;
 SELECT * from tbl_member_auth;
 
+delete from tbl_member where username = '상필ㅠㅠㅋㅋ';
+
 SELECT
 			m.userid userid,
 			m.userpw userpw,
