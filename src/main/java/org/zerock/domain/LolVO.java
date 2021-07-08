@@ -16,6 +16,7 @@ public class LolVO {
 	private String teamc;
 	private String victory;
 	private Date regdate;
+	private String ip;
 	
 //	public ArrayList<LolVO> getTypeArr(){
 //		ArrayList<LolVO> list = new ArrayList<>();
