@@ -46,15 +46,15 @@ drop table lol_board;
 
 -- 여기다!!! 여기야 ㅅㅂ 여기서 작업해!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 DESC lol_board;
-SELECT * FROM lol_board where name = '이승';
+SELECT * FROM lol_board;
 DELETE from lol_board
 where bno BETWEEN '81' and '90';
 ALTER TABLE lol_board AUTO_INCREMENT = 81;
 
 select name, 
-	COUNT(name) as '총판수',
-    count(if(victory='승',1,null)) as '승리 횟수', 
-    truncate( (K+A)/D,0 ) as 'kda',
+	COUNT(name) as total,
+    count(if(victory='승',1,null)) as wincnt, 
+    truncate( (K+A)/D,0 ) as kda,
 	truncate(count(if(victory='승',1,null)) / COUNT(name) * 100 , 0) as winrate
 from lol_board 
 GROUP BY name
@@ -90,6 +90,22 @@ where bno = 60;
 
 
 
+select DISTINCT champ, 
+	COUNT(name) as total,
+    count(if(victory='승',1,null)) as wincnt, 
+    truncate((SUM(K) + SUM(A))/SUM(D) ,1 ) kda
+from lol_board 
+where name = '상필'
+GROUP BY name;
+
+select DISTINCT champ,
+	count(champ) total,
+    count(if(victory='승',1,null)) wincnt,
+    truncate(count(if(victory='승',1,null)) / COUNT(champ) * 100 , 0) winrate
+from lol_board
+where name = '상필'
+GROUP BY champ
+ORDER BY winrate desc;
 
 
 

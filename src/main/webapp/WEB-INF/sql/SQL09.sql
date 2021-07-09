@@ -11,7 +11,12 @@ desc persistent_logins;
 
 SELECT * FROM tbl_board
 ORDER BY bno desc;
+desc tbl_member;
 SELECT * FROM tbl_member;
+
+DELETE from tbl_member where userid = '';
+
+
 select * FROM tbl_reply;
 
 update tbl_board
