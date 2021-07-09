@@ -84,9 +84,9 @@ public class MemberMapperTests {
 	
 	@Test
 	public void textUpdate() {
-		MemberVO vo = mapper.read("얻고자 하는 사용자 id");
+		MemberVO vo = mapper.read("");
 		
-		String newpw = "";
+		String newpw = "111";
 		vo.setUserpw(encoder.encode(newpw));
 		
 		assertEquals(1, mapper.update(vo));

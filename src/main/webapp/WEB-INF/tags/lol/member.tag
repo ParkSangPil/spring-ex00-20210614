@@ -3,8 +3,35 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ attribute name="id" required="false" %>
 
+
+<script>
+$(function() {
+	$(function(){
+		$("#input-${id }").hide();
+	})
+	
+	$("#select-${id}").change(function() {
+		console.log("change !!");
+		if($("#select-${id}").val() == "A"){
+			$("#input-${id }").show();
+			$("#input-${id}").keyup(function() {
+				console.log('keyup');
+				var name = $(this).val();
+				$("#select-${id} option:last-child").attr("value", name);
+				//console.log($("#input-${id} option:last-child"));
+			});
+		}else{
+			$("#input-${id }").hide();
+			$("#input-${id }").val("");
+			$("#select-${id} option:last-child").attr("value", "A");
+		}
+	});
+		
+})
+</script>
 <div class="input-group">
-<select name="${id }" class="form-control lol-member-select">
+<input id="input-${id }" type="text" class="form-control lol-member-input col-8">
+<select id="select-${id}" name="${id }" class="form-control lol-member-select">
 	<option selected="selected"> </option>
 	<option value="깜시">깜시</option>
 	<option value="상필">상필</option>
@@ -18,6 +45,6 @@
 	<option value="정력">정력</option>
 	<option value="형원">형원</option>
 	<option value="사서">사서</option>
-	<option value="용병">용병</option>
+	<option value="A">용병</option>
 </select>
 </div>

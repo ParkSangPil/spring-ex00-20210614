@@ -5,6 +5,14 @@
   
 <mapper namespace="org.zerock.mapper.ReplyMapper">
 
+<delete id="removeByBnoByUserid">
+	DELETE FROM tbl_reply
+	WHERE bno IN (
+		SELECT bno FROM tbl_board WHERE writer = #{userid}
+	)
+	
+</delete>
+
 <delete id="removeByUserid">
 	DELETE FROM tbl_reply
 	WHERE replyer = #{userid}
