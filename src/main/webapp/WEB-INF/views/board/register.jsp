@@ -33,7 +33,7 @@
 				</div>
 				<div class="form-group">
 					<label forinput3>첨부 파일</label>
-					<input id="input3" class="form-control" type="file" name="file" accept="image/*">
+					<input id="input3" class="form-control" multiple="multiple" type="file" name="file" accept="image/*">
 				</div>
 				<div class="form-group">
 					<label for="input2">작성자</label>

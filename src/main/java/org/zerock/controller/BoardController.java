@@ -53,9 +53,9 @@ public class BoardController {
 	
 	@PostMapping("/register")
 	public String register(BoardVO board,
-			@RequestParam("file") MultipartFile file, RedirectAttributes rttr) { // 아래 주석이 컬럼들을 자동으로 넣어줌
+			@RequestParam("file") MultipartFile[] file, RedirectAttributes rttr) { // 아래 주석이 컬럼들을 자동으로 넣어줌
 		
-		board.setFileName(file.getOriginalFilename());
+//		board.setFileName(file.getOriginalFilename());
 		
 		// service에게 등록업무 시키고
 		service.register(board, file); // board는 title,content,writer 을 가지고 있지

@@ -24,5 +24,5 @@ public interface BoardService {
 	
 	public int getTotal(Criteria cri);
 	
-	public void register(BoardVO board, MultipartFile file);
+	public void register(BoardVO board, MultipartFile[] file);
 }

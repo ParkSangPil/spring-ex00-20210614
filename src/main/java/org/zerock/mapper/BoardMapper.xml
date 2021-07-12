@@ -84,7 +84,7 @@
   	VALUES (#{title}, #{content}, #{writer})
   </insert>
   
-  <select id="read" resultType="org.zerock.domain.BoardVO">
+  <select id="read" resultMap="boardMap">
   	SELECT 
   		b.bno bno,
   		b.title title,
@@ -98,6 +98,21 @@
   		                  JOIN tbl_member m ON b.writer = m.userid
   	WHERE b.bno = #{bno}
   </select>
+  
+  <!-- 다중 파일 처리 매핑 방식   -->
+<resultMap type="org.zerock.domain.BoardVO" id="boardMap">
+	<id property="bno" column="bno" />
+	<result property="title" column="title"/>
+	<result property="content" column="content"/>
+	<result property="writer" column="writer"/>
+	<result property="regdate" column="regdate"/>
+	<result property="updateDate" column="updatedate"/>
+	<result property="writerName" column="writerName"/>
+	<collection property="fileName" resultMap="fileNameMap"></collection>
+</resultMap>
+<resultMap type="string" id="fileNameMap">
+	<result column="fileName"/>
+</resultMap>
   
   <delete id="delete">
   	DELETE FROM tbl_board WHERE bno = #{bno}

@@ -49,10 +49,20 @@ var userid = "${pinfo.member.userid}";
 					<textarea readonly="readonly" id="textarea1" class="form-control" name="content" rows="" cols=""><c:out value="${board.content } "/></textarea>
 				</div>
 				
+				<%-- 
 				<c:if test="${not empty board.fileName }">
 					<div>
 						<img class="img-fluid" alt="" src="${imgRoot}${board.bno }/${board.fileName }">
 					</div>
+				</c:if> 
+				--%>
+				
+				<c:if test="${not empty board.fileName }">
+				<c:forEach items="${board.fileName }" var="aFile">
+					<div>
+						<img class="img-fluid" alt="" src="${imgRoot}${board.bno }/${aFile }">
+					</div>
+				</c:forEach>
 				</c:if>
 				
 				<div class="form-group">

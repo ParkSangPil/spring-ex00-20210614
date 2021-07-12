@@ -10,9 +10,6 @@
 <link href="https://img.icons8.com/ios-glyphs/50/000000/league-of-legends.png" rel="shortcut icon" type="image/x-icon">
 
 <%@ include file="/WEB-INF/subModules/bootstrapHeader.jsp"%>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/i18n/defaults-*.min.js"></script>
 
 <title>OP.GG</title>
 
