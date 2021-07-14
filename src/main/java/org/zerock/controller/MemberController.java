@@ -40,11 +40,12 @@ public class MemberController {
 	
 	@GetMapping("/signup")
 	public void signUp(Criteria cri) {
-		
+		log.info("get");
 	}
 	
 	@PostMapping("/signup")
 	public String signipPost(MemberVO vo, RedirectAttributes rttr) {
+		log.info("post");
 		log.info(vo);
 		
 		boolean ok = service.insert(vo);
