@@ -5,7 +5,7 @@
 
 
 <div style="text-align: center;" aria-describedby="basic-addon1" class="input-group">
-	<select name="bbsCode" id="bbsCode" class="selectpicker form-control lol-champ-select" data-live-search="true" name="${id }">
+	<select id="bbsCode" class="selectpicker form-control lol-champ-select" data-live-search="true" name="${id }">
 		<option value="" selected="selected">champ</option>
 		<option value="가렌">가렌</option>
 		<option value="갈리오">갈리오</option>
