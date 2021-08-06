@@ -91,7 +91,9 @@ $(function(){
 			item.teamk = lolKillInput.eq(i).val();
 			item.teamd = lolDeathInput.eq(i).val();
 			item.teama = lolAssistInput.eq(i).val();
-			item.teamc = lolChampSelect.eq(i).val();
+			
+			item.teamc = lolChampSelect.eq((i*2)+1).val();
+			
 			item.victory = lolVictoryInput.eq(0).val();
 			arr.push(item);
 		}
@@ -102,7 +104,10 @@ $(function(){
 			item.teamk = lolKillInput.eq(i).val();
 			item.teamd = lolDeathInput.eq(i).val();
 			item.teama = lolAssistInput.eq(i).val();
-			item.teamc = lolChampSelect.eq(i).val();
+			
+			item.teamc = lolChampSelect.eq((i*2)+1).val();
+			// 이새끼 검색기능 넣다보니 똑같은 클래스 두개 들어가서 이렇게 함
+			
 			item.victory = lolVictoryInput.eq(1).val();
 			arr.push(item);
 		}

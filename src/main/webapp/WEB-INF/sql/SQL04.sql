@@ -48,8 +48,8 @@ drop table lol_board;
 DESC lol_board;
 SELECT * FROM lol_board;
 DELETE from lol_board
-where bno BETWEEN '251' and '260';
-ALTER TABLE lol_board AUTO_INCREMENT = 251;
+where bno BETWEEN '291' and '300';
+ALTER TABLE lol_board AUTO_INCREMENT = 291;
 
 select name, 
 	COUNT(name) as total,
