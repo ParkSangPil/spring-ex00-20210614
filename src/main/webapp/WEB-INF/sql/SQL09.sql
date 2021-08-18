@@ -14,6 +14,7 @@ ORDER BY bno desc;
 desc tbl_member;
 SELECT * FROM tbl_member;
 SELECT * FROM tbl_member_auth;
+desc tbl_member_auth;
 
 DELETE from tbl_member where userid = '';
 
@@ -42,35 +43,71 @@ SELECT * FROM user_review_file;
 
 DROP table user;
 drop table b2buser;
+drop table employeeuser;
 
 CREATE TABLE user(
-	bno int PRIMARY	KEY AUTO_INCREMENT,
-    userid VARCHAR(50) not null,
+    userid VARCHAR(50) PRIMARY KEY,
     userpw VARCHAR(500) not null,
     userName VARCHAR(50) not null,
-    userAddress VARCHAR(50) not null,
-    birthDate TIMESTAMP DEFAULT now(),
+    userAddress VARCHAR(100) not null,
+    address VARCHAR(100) not null,
+    birthDate DATE DEFAULT now(),
     userPhonenum int(50) not null,
     userEmail VARCHAR(50) not null,
     userSex int(5) not null,
-    userNickname VARCHAR(50) not null
+    userNickname VARCHAR(50) not null,
+    
+    lat DECIMAL(12,7) not null,
+    lag DECIMAL(12,7) not null
 );
 
 CREATE TABLE b2buser(
-	bno int PRIMARY	KEY AUTO_INCREMENT,
-    userid VARCHAR(50) not null,
+    b2buserid VARCHAR(50) PRIMARY KEY,
     userpw VARCHAR(500) not null,
     userName VARCHAR(50) not null,
-    userAddress VARCHAR(50) not null,
-    birthDate TIMESTAMP DEFAULT now(),
+    userAddress VARCHAR(100) not null,
+    address VARCHAR(100) not null,
+    birthDate DATE DEFAULT now(),
     userPhonenum int(50) not null,
     userEmail VARCHAR(50) not null,
     userSex int(5) not null,
-    userNickname VARCHAR(50) not null
+    userNickname VARCHAR(50) not null,
+    
+    lat DECIMAL(12,7) not null,
+    lag DECIMAL(12,7) not null
 );
+
+CREATE table employeeuser(
+    empuserid VARCHAR(50) PRIMARY KEY,
+    userpw VARCHAR(500) not null,
+    userName VARCHAR(50) not null,
+    userAddress VARCHAR(100) not null,
+    address VARCHAR(100) not null,
+    birthDate DATE DEFAULT now(),
+    userPhonenum int(50) not null,
+    userEmail VARCHAR(50) not null,
+    userSex int(5) not null,
+    userNickname VARCHAR(50) not null,
+    
+    lat DECIMAL(12,7) not null,
+    lag DECIMAL(12,7) not null
+);
+
+CREATE table user_auth(
+	ano int PRIMARY KEY AUTO_INCREMENT,
+    userid VARCHAR(50) not null,
+    auth VARCHAR(255) not null,
+	FOREIGN KEY (userid) REFERENCES user(userid)
+
+);
+desc user_auth;
+
+drop table user_auth;
 
 SELECT * FROM user;
 SELECT * FROm b2buser;
+SELECT * FROM employeeuser;
+SELECT * FROM user_auth;
 
 delete from user;
 delete from b2buser;
