@@ -5,8 +5,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.zerock.domain.DuoVO;
 import org.zerock.domain.LolVO;
 import org.zerock.domain.LolVO2;
+import org.zerock.domain.LolVO3;
 import org.zerock.mapper.LolMapper;
 
 import lombok.Setter;
@@ -39,5 +41,13 @@ public class LolServiceImpl implements LolService{
 		mapper.registerOTP(ipv6);
 	}
 	
+	@Override
+	public String getbestplayer(String champ) {
+		return mapper.getbestplayer(champ);
+	}
 	
+	@Override
+	public List<LolVO3> cal(DuoVO vo) {
+		return mapper.duo(vo);
+	}
 }

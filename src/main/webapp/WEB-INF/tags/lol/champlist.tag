@@ -88,6 +88,7 @@
 		<option value="아이번">아이번</option>
 		<option value="아지르">아지르</option>
 		<option value="아칼리">아칼리</option>
+		<option value="아크샨">아크샨</option>
 		<option value="아트록스">아트록스</option>
 		<option value="아펠리오스">아펠리오스</option>
 		<option value="알리스타">알리스타</option>

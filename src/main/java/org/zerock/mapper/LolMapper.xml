@@ -80,5 +80,27 @@
   	VALUES (#{ipv6})
   </insert>
   
+  <select id="getbestplayer" resultType="string">
+     SELECT
+      name,
+      count(name)
+      FROm lol_board
+      WHERE champ = #{champ}
+      GROUP BY name
+      ORDER BY count(name) DESC
+      LIMIT 1;
+  </select>
+  
+  <select id="duo" resultType="org.zerock.domain.LolVO3">
+     SELECT
+     bno,
+     name,
+     K,
+     D,
+     A,
+     champ,
+     victory
+     FROM lol_board
+  </select>
   
 </mapper>

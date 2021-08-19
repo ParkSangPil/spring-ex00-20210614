@@ -117,9 +117,98 @@ $(function(){
 })
 </script>
 
+<script type="text/javascript">
+$(function() {
+   for(let i = 1; i<16; i++) {
+      let champ = $("#"+`\${i}`).text(); 
+      
+      $.ajax({
+         type : "post",
+         data : {champ : champ},
+         url : "${appRoot}/sample/getBestPlayer",
+         success : function(data) {
+            $("#"+ `\${i}` + "ts").text(data);
+         },
+         error : function() {
+            console.log("실패");
+         }
+         
+      })
+   }
+   
+	$("#duobutton").click(function(e){
+	e.preventDefault();
+			
+	var Aplayer = $("#Aplayer").val();
+	var Bplayer = $("#Bplayer").val();
+	
+			//$("#form1").submit();
+			var data = {Aplayer : Aplayer, Bplayer : Bplayer};
+
+			$.ajax({
+				type : "post",
+				url : "${appRoot }/sample/duo",
+				data : data,
+				success : function(data) {
+					$("#duowinrate").val(data.승률 + "%");
+					$("#wincount").val(" " + data.승리카운트 + "승");
+					$("#loscount").val(data.패배카운트 + "패");
+				},
+				error : function() {
+					console.log("실패");
+					$("duowinrate").val("전적이 없습니다");
+				}
+			});
+		})
+	})
+</script>
+
 </head>
 <body style="background-color: rgb(249 247 232);">
 <div class="container mt-5">
+
+	<div class="row justify-content-center">
+		<select id="Aplayer" name="Aplayer" class="form-control col-1">
+			<option selected="selected"> </option>
+			<option value="깜시">깜시</option>
+			<option value="상필">상필</option>
+			<option value="짱깨">짱깨</option>
+			<option value="이승">이승</option>
+			<option value="쥐">쥐</option>
+			<option value="게이">게이</option>
+			<option value="고기">고기</option>
+			<option value="휴지">휴지</option>
+			<option value="때">때</option>
+			<option value="정력">정력</option>
+			<option value="형원">형원</option>
+			<option value="사서">사서</option>
+		</select>
+	<span class="align-self-center">&nbsp와&nbsp</span>
+		<select id="Bplayer" name="Bplayer" class="form-control col-1">
+			<option selected="selected"> </option>
+			<option value="깜시">깜시</option>
+			<option value="상필">상필</option>
+			<option value="짱깨">짱깨</option>
+			<option value="이승">이승</option>
+			<option value="쥐">쥐</option>
+			<option value="게이">게이</option>
+			<option value="고기">고기</option>
+			<option value="휴지">휴지</option>
+			<option value="때">때</option>
+			<option value="정력">정력</option>
+			<option value="형원">형원</option>
+			<option value="사서">사서</option>
+		</select>
+	<span class="align-self-center">&nbsp의 승률 : </span>
+	<input style="border-style: none; width:80px; outline:none; text-align: center; background-color: rgb(249 247 232);" id="duowinrate" value="">
+	<button id="duobutton" type="submit" class="btn btn-info">검색</button>
+	<input style="border-style: none; width:40px; outline:none; text-align: center; background-color: rgb(249 247 232);" id="wincount" value="">
+	<input style="border-style: none; width:40px; outline:none; text-align: center; background-color: rgb(249 247 232);" id="loscount" value="">
+	</div>
+	
+	<div class="mt-5">
+	</div>
+
 	<form id="form1" action="${appRoot }/sample/register" method="post">
 	<h1 class="row justify-content-center">lol</h1>
 	
@@ -305,36 +394,44 @@ $(function(){
 			</table>
 		</div>
 		
-		<div class="col-3">
+		<div class="col-2">
 		
 		</div>
 		
-		<div class="col-4">
-			<table class="table">
-				<thead>
-				<tr>
-					<th style="text-align: center;" scope="col">#</th>
-					<th style="text-align: center;" scope="col">Champ</th>
-					<th style="text-align: center;" scope="col">승률</th>
-				</tr>
-				</thead>
-				
-				<tbody> 
-					<c:forEach items="${list66 }" var="lol2" varStatus="status">
-					<tr>
-						<td style="text-align: center;">${status.index + 1 }</td>
-						<td style="text-align: center;">${lol2.champ }</td>
-						<td style="text-align: center;">${lol2.winrate } %</td>
-					</tr>
-					</c:forEach>
-				</tbody>
-				
-			</table>
-		</div>
+		<div class="col-5">
+         <table class="table">
+            <thead>
+            <tr>
+               <th style="text-align: center;" scope="col">#</th>
+               <th style="text-align: center;" scope="col">Champ</th>
+               <th style="text-align: center;" scope="col">승률</th>
+               <th style="text-align: center;" scope="col">모스트 플레이어</th>
+            </tr>
+            </thead>
+            
+            <tbody> 
+               <c:forEach items="${list66 }" var="lol2" varStatus="status">
+               <tr>
+                  <td style="text-align: center;">${status.index + 1 }</td>
+                  <td id="${status.index + 1 }" style="text-align: center;">${lol2.champ }</td>
+                  <td style="text-align: center;">${lol2.winrate } %</td>
+                  <td id="${status.index + 1 }ts"style="text-align: center;"></td>
+               </tr>
+               </c:forEach>
+            </tbody>
+            
+         </table>
+      </div>
 	</div>
 				
-					
+	<hr>
 	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 </div>
 
 </body>
