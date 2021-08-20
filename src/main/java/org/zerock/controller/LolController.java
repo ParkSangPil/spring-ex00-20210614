@@ -20,6 +20,7 @@ import org.zerock.domain.DuoVO;
 import org.zerock.domain.LolVO;
 import org.zerock.domain.LolVO2;
 import org.zerock.domain.LolVO3;
+import org.zerock.domain.SadariVO;
 import org.zerock.service.LolService;
 
 import lombok.AllArgsConstructor;
@@ -138,6 +139,11 @@ public class LolController {
 		
 	}
 	
+	@GetMapping("/sadari")
+	public void sadari(SadariVO vo) {
+		
+	}
+	
 	@PostMapping(value = "/getBestPlayer", produces = "text/plain; charset=utf-8")
 	@ResponseBody
 	public String getBestPlayer(String champ) {
@@ -169,9 +175,38 @@ public class LolController {
 		List<LolVO3> duorate = service.cal(vo);
 		
 		ArrayList<LolVO3> part1 = new ArrayList<LolVO3>();
-		for(LolVO3 onegame : duorate) {
+		for(int a = 0 ; a < duorate.size() ; a++) { //이것도 향상된거에서 바꿈 for(LolVO3 onegame : duorate) { 원랜 이거였음
+			
+			// 여기서 부터 데이터가 안좋아서 억지로 넣은것 마음에 안듦 ㅠㅜ 
+			LolVO3 onegame = duorate.get(a);
+			if(a == duorate.size()-1) {
+				log.info("-----------------------------------");
+				System.out.println(part1);
+				for(int i = 0 ; i < part1.size() ; i++) {
+					if(Aplayer.equals(part1.get(i).getName())) {
+						log.info("작동 합니다.");
+						for(int j = 0 ; j < part1.size() ; j++) {
+							if(Bplayer.equals(part1.get(j).getName())) {
+								if((part1.get(i).getVictory().equals("승")) && (part1.get(j).getVictory().equals("승"))) {
+									countw++;
+									log.info("듀오 승리!");
+								}else if((part1.get(i).getVictory().equals("패")) && (part1.get(j).getVictory().equals("패"))) {
+									countl++;
+									log.info("듀오 패배!");
+								}
+							}
+						}
+					}else {
+						log.info("작동 안합니다 ㅠ.");
+					}
+				}
+				log.info("-----------------------------------");
+				part1.clear();
+			}
+			// 여기까지
+			
 			int b = onegame.getBno();
-			if(((b%10) == 1) || b == 350) { // ㅅㅂ ㅋㅋㅋㅋㅋㅋㅋㅋ 여기 이상해염
+			if(((b%10) == 1)) { // ㅅㅂ ㅋㅋㅋㅋㅋㅋㅋㅋ 여기 이상해염
 				log.info("-----------------------------------");
 				System.out.println(part1);
 				for(int i = 0 ; i < part1.size() ; i++) {

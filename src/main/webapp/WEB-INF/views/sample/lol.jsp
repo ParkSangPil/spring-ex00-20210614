@@ -118,32 +118,38 @@ $(function(){
 </script>
 
 <script type="text/javascript">
-$(function() {
-   for(let i = 1; i<16; i++) {
-      let champ = $("#"+`\${i}`).text(); 
-      
-      $.ajax({
-         type : "post",
-         data : {champ : champ},
-         url : "${appRoot}/sample/getBestPlayer",
-         success : function(data) {
-            $("#"+ `\${i}` + "ts").text(data);
-         },
-         error : function() {
-            console.log("실패");
-         }
-         
-      })
-   }
-   
-	$("#duobutton").click(function(e){
-	e.preventDefault();
-			
-	var Aplayer = $("#Aplayer").val();
-	var Bplayer = $("#Bplayer").val();
-	
+
+	$(function() {
+		for (let i = 1; i < 16; i++) {
+			let champ = $("#" + `\${i}`).text();
+
+			$.ajax({
+				type : "post",
+				data : {
+					champ : champ
+				},
+				url : "${appRoot}/sample/getBestPlayer",
+				success : function(data) {
+					$("#" + `\${i}` + "ts").text(data);
+				},
+				error : function() {
+					console.log("실패");
+				}
+
+			})
+		}
+
+		$("#duobutton").click(function(e) {
+			e.preventDefault();
+
+			var Aplayer = $("#Aplayer").val();
+			var Bplayer = $("#Bplayer").val();
+
 			//$("#form1").submit();
-			var data = {Aplayer : Aplayer, Bplayer : Bplayer};
+			var data = {
+				Aplayer : Aplayer,
+				Bplayer : Bplayer
+			};
 
 			$.ajax({
 				type : "post",
@@ -423,6 +429,8 @@ $(function() {
          </table>
       </div>
 	</div>
+	
+	<a href="${appRoot }/sample/sadari">사다리 타러 가기</a>
 				
 	<hr>
 	
