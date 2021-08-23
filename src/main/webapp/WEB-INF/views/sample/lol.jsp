@@ -206,10 +206,10 @@ $(function(){
 			<option value="사서">사서</option>
 		</select>
 	<span class="align-self-center">&nbsp의 승률 : </span>
-	<input style="border-style: none; width:80px; outline:none; text-align: center; background-color: rgb(249 247 232);" id="duowinrate" value="">
+	<input readonly="readonly" style="border-style: none; width:80px; outline:none; text-align: center; background-color: rgb(249 247 232);" id="duowinrate" value="">
 	<button id="duobutton" type="submit" class="btn btn-info">검색</button>
-	<input style="border-style: none; width:40px; outline:none; text-align: center; background-color: rgb(249 247 232);" id="wincount" value="">
-	<input style="border-style: none; width:40px; outline:none; text-align: center; background-color: rgb(249 247 232);" id="loscount" value="">
+	<input readonly="readonly" style="border-style: none; width:40px; outline:none; text-align: center; background-color: rgb(249 247 232);" id="wincount" value="">
+	<input readonly="readonly" style="border-style: none; width:40px; outline:none; text-align: center; background-color: rgb(249 247 232);" id="loscount" value="">
 	</div>
 	
 	<div class="mt-5">

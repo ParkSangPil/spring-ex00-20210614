@@ -140,8 +140,65 @@ public class LolController {
 	}
 	
 	@GetMapping("/sadari")
-	public void sadari(SadariVO vo) {
+	public void sadari() {
 		
+	}
+	
+	@PostMapping("/sadari2")
+	@ResponseBody
+	public List<String> sadari2(SadariVO vo) {
+		
+		ArrayList<String> cards = new ArrayList<String>();
+		ArrayList<String> cards2 = new ArrayList<String>();
+		
+		System.out.println(vo);
+//		log.info(vo);
+		
+		String[] card = {vo.getName1(), vo.getName2(), vo.getName3(), vo.getName4(), vo.getName5(),
+						 vo.getName6(), vo.getName7(), vo.getName8(), vo.getName9(), vo.getName10() };
+		
+		for(int i = 0 ; i < card.length ; i++) {
+			cards.add(card[i]);
+		}
+		
+		for(int i = 0 ; i < card.length ; i++) {
+			double randomValue = Math.random();
+			System.out.println(cards);
+			int ran = (int)(randomValue * cards.size());
+			log.info("ran 숫자는 " + ran);
+			cards2.add(cards.get(ran));
+			cards.remove(ran);
+			System.out.println(cards);
+		}
+		
+		System.out.println(cards2);
+		
+		return cards2;
+	}
+	
+	@PostMapping("/sadari3")
+	@ResponseBody
+	public List<String> sadari3(SadariVO vo) {
+		
+		ArrayList<String> teamnum = new ArrayList<String>();
+		ArrayList<String> cards = new ArrayList<String>();
+		
+		String[] card = {"1", "2", "1", "2", "1", "2", "1", "2", "1", "2",};
+		
+		for(int i = 0 ; i < card.length ; i++) {
+			cards.add(card[i]);
+		}
+		
+		for(int i = 0 ; i < card.length ; i++) {
+			double randomValue = Math.random();
+			int ran = (int)(randomValue * cards.size());
+			teamnum.add(cards.get(ran));
+			cards.remove(ran);
+		}
+		
+		System.out.println(teamnum);
+		
+		return teamnum;
 	}
 	
 	@PostMapping(value = "/getBestPlayer", produces = "text/plain; charset=utf-8")
