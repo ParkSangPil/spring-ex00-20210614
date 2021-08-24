@@ -183,7 +183,7 @@ public class LolController {
 		ArrayList<String> teamnum = new ArrayList<String>();
 		ArrayList<String> cards = new ArrayList<String>();
 		
-		String[] card = {"1", "2", "1", "2", "1", "2", "1", "2", "1", "2",};
+		String[] card = {"1", "2", "1", "2", "1", "2", "1", "2", "1", "2"};
 		
 		for(int i = 0 ; i < card.length ; i++) {
 			cards.add(card[i]);

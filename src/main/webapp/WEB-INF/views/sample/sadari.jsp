@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://img.icons8.com/ios-glyphs/50/000000/league-of-legends.png" rel="shortcut icon" type="image/x-icon">
 
 <%@ include file="/WEB-INF/subModules/bootstrapHeader.jsp" %>
 
