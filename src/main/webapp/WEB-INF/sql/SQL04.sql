@@ -48,7 +48,7 @@ drop table lol_board;
 DESC lol_board;
 SELECT * FROM lol_board;
 DELETE from lol_board
-where bno BETWEEN '291' and '300';
+where bno BETWEEN '291' and '310';
 ALTER TABLE lol_board AUTO_INCREMENT = 291;
 
 select name, 
@@ -107,60 +107,15 @@ where name = '상필'
 GROUP BY champ
 ORDER BY winrate desc;
 
-SELECT champ,
-        COUNT(champ) total,
-        count(name) most,
-        truncate(count(if(victory='승',1,null)) / COUNT(name) * 100 , 0) winrate,
-        (select name
-		 FROM lol_board
-		 GROUP BY champ
-		 HAVING winrate != 100
-		 LIMIT 0, 15)
-     FROM lol_board
-     GROUP BY champ
-     HAVING winrate != 100
-     ORDER BY winrate DESC, total desc
-     LIMIT 0, 15;
-    
-select *
-from lol_board
-where champ = '말파이트';
 
-select champ,
-		(select name
-        ORDER BY count(name))
-from lol_board
-GROUP BY champ
-ORDER BY count(name) desc;
 
-SELECT 
-champ,
-name,
-truncate(count(if(victory='승',1,null)) / COUNT(name) * 100 , 0) winrate,
-count(champ) cnt
-FROM lol_board
-GROUP BY name, champ
-HAVING champ != "" AND winrate != 100
-ORDER BY winrate DESC;
 
-select 
-	champ,
-    truncate(count(if(victory='승',1,null)) / COUNT(name) * 100 , 0) winrate,
-    count(name) cnt,
-    name
-from lol_board
-GROUP BY champ
-HAVING champ != "" and winrate != 100
-ORDER BY winrate desc;
 
-SELECT
-name,
-count(name)
-FROm lol_board
-WHERE champ = '마오카이'
-GROUP BY name
-ORDER BY count(name) DESC
-LIMIT 1;
+
+
+
+
+
 
 
 
